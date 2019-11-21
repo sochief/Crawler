@@ -4,14 +4,18 @@ from spider import Spider
 from domain import *
 from general import *
 
-PROJECT_NAME = 'PUT YOUR NAME'# will do it in GUI
-HOMEPAGE = 'PUT A NAME HERE' # needa gui
+# Implement this in GUI
+PROJECT_NAME = 'PUT YOUR NAME'
+# Do this in GUI as well
+HOMEPAGE = 'PUT A NAME HERE'
 DOMAIN_NAME = get_domain_name(HOMEPAGE)
 QUEUE_FILE = PROJECT_NAME + '/queue.txt'
 CRAWLED_FILE = PROJECT_NAME + '/crawled.txt'
-NUMBER_OF_THREADS = 8 #depends on operating system
+# Depends on operating system and RAM
+NUMBER_OF_THREADS = 8
 queue = Queue()
-# When a program just starts, we cant go to the multithreadind, coz it needs to create files and directories
+# When a program just starts, we cant go to the multithreading
+# Because it needs to create files and directories
 Spider(PROJECT_NAME,HOMEPAGE,DOMAIN_NAME)
 
 # Create worker threads (will die when main exits)
@@ -24,7 +28,8 @@ def create_workers():
 # Do the next job in the queue
 def work():
     while True:
-        url = queue.get()# get the next item
+        # Get the next item
+        url = queue.get()
         Spider.crawl_page(threading.currentThread().name,url)
         queue.task_done()
 

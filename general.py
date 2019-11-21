@@ -22,19 +22,17 @@ def create_data_files(project_name,base_url):
 
 # Create a new file
 def write_file(path,data):
-    f = open(path,'w')#We give a path and 'w' means write,creating a file
+    f = open(path,'w')#We give a path
+    #'w' means write,creating a file
     f.write(data)#giving a data for it
     f.close()
 
 
 # Add data onto an existing file
 def append_to_file(path,data):
-    with open(path,'a') as file:#'a' stays for append, so it will add links to the end of the file
+    with open(path,'a') as file:#'a' stays for append
+        #so it will add links to the end of the file
         file.write(data + '\n')
-
-
-
-
 
 # Delete the contents of the file
 def delete_file_contents(path):
@@ -43,8 +41,11 @@ def delete_file_contents(path):
 
 
 
-# Bad thing anout using variables! If the computer shuts off, or there is a bug, all the data is going to be lost
-# With files, all of the data is going to be saved, but it will take more time
+# Bad thing anout using variables!
+# If the computer shuts off, or there is a bug
+# all the data is going to be lost
+# With files, all of the data is going to be saved
+# but it will take more time
 
 
 
@@ -53,7 +54,8 @@ def file_to_set(file_name):
     results = set()
     with open(file_name,'rt') as f: #'rt' means read text file
         for line in f:
-            results.add(line.replace('\n','')) #add a line to a set, and there is a new line character(line 33)
+            results.add(line.replace('\n','')) #add a line to a set
+            #and there is a new line character(line 33)
     return results #return the set, looking good
 
 # Iterate through a set, each item will be a new line in the file
